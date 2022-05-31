@@ -241,7 +241,7 @@ void printmirror(BinaryNodeTree<int>*root)
 		root->right=temp;
 	}
 }
-void Preordertraversal(BinaryNodeTree<int>*root)
+ void Preordertraversal(BinaryNodeTree<int>*root)
 {
 	if(root==NULL)
 	return;

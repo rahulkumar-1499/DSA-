@@ -142,11 +142,131 @@ bool checkBalancedTree(BinarySearchTree<int>*root)
 		return true;
 	}
 }
+//--------------------------------------------------------------------
+
+//method 2 for checking BST
+
+class isBSTcheck
+{
+	public:
+		int minimum;
+		int maximum;
+		bool isBST;
+};
+
+isBSTcheck findBST(BinarySearchTree<int>*root)
+{
+	if(root==NULL)
+	{
+		isBSTcheck obj;
+		obj.isBST=true;
+		obj.maximum=INT_MIN;
+		obj.minimum-INT_MAX;
+		return obj;
+	}
+	
+	isBSTcheck leftoutput=findBST(root->left);
+	isBSTcheck rightoutput=findBST(root->right);
+	
+	int min1=min(root->data,min(leftoutput.minimum , rightoutput.minimum));
+	int max1=max(root->data,max(leftoutput.maximum , rightoutput.maximum));
+	
+	bool returnvalue=(leftoutput.isBST) && (rightoutput.isBST)
+	 && (root->data>leftoutput.maximum) && (root->data<=rightoutput.minimum);
+	
+	isBSTcheck obj;
+	obj.isBST=returnvalue;
+	obj.maximum=max1;
+	obj.minimum=min1;
+	
+	return obj;
+}
+
+//-----------------------------------------------------------------------------
+
+//methd 3: for checkBST
+
+bool BST3 (BinarySearchTree<int>*root, int min=INT_MIN,int max=INT_MAX)
+{
+	if(root==NULL)
+	{
+		return true;
+	}
+	if(root->data<min || root->data>max)
+	{
+		return false;
+		
+	}
+	bool leftside=BST3(root->left,min,root->data-1);
+	bool rightside=BST3(root->right,root->data,max);
+	
+	return (leftside&&rightside);
+}
+
+	BinarySearchTree<int>* createBST(int arr[],int start,int end)
+	{
+		if(start >end)
+		{
+			return NULL;
+		}
+			int mid=(start+(end-1))/2;
+			
+			BinarySearchTree<int>*root=new BinarySearchTree<int>(arr[mid]);
+			
+			root->left=createBST(arr,start,mid-1);
+			root->right=createBST(arr,mid+1,end);
+			
+			return root;			
+		
+		
+		
+	}
+
+
+	 void Preordertraversal(BinarySearchTree<int>*root)
+{
+	if(root==NULL)
+	return;
+	cout<<"\n"<<root->data<<" ";
+	Preordertraversal(root->left);
+	Preordertraversal(root->right);
+}
+
+
+
+
+
+
+
+
+
+//12 6 14 3 7 13 16  -1 -1 -1 -1 -1 -1 -1 -1
 //-------------------------------------------------------------
 int main()
 {
-	BinarySearchTree<int>*root;
-	root=takeinputlevelwise();
+//	BinarySearchTree<int>*root;
+//	root=takeinputlevelwise();
+//	findBST(root);
+
+//method 2
+/*	isBSTcheck obj=findBST(root);
+	cout<<endl;
+	cout<<"minimum element in BST is "<<obj.minimum<<endl;
+	cout<<"maximum element in BST is "<<obj.maximum<<endl;
+	cout<<"BST of given tree is "<<obj.isBST;
+	
+//method 3
+	cout<<endl;
+	cout<<"BST is "<<BST3(root);
+*/
+	int arr[]={1,2,3,4,5,6,7};
+	int start=0;
+	int end=sizeof(arr)/sizeof(arr[0]);
+	 BinarySearchTree<int>*root;
+	 
+	 root=createBST(arr,start,end-1);
+	 Preordertraversal(root);
+
 /*	
 	cout<<"tree is BST"<<check(root).isBST ;
 
