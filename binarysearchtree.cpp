@@ -244,21 +244,21 @@ bool BST3 (BinarySearchTree<int>*root, int min=INT_MIN,int max=INT_MAX)
 //-------------------------------------------------------------
 int main()
 {
-//	BinarySearchTree<int>*root;
-//	root=takeinputlevelwise();
-//	findBST(root);
+	BinarySearchTree<int>*root;
+	root=takeinputlevelwise();
+	findBST(root);
 
 //method 2
-/*	isBSTcheck obj=findBST(root);
+	isBSTcheck obj=findBST(root);
 	cout<<endl;
 	cout<<"minimum element in BST is "<<obj.minimum<<endl;
 	cout<<"maximum element in BST is "<<obj.maximum<<endl;
 	cout<<"BST of given tree is "<<obj.isBST;
 	
 //method 3
-	cout<<endl;
+/*	cout<<endl;
 	cout<<"BST is "<<BST3(root);
-*/
+
 	int arr[]={1,2,3,4,5,6,7};
 	int start=0;
 	int end=sizeof(arr)/sizeof(arr[0]);
@@ -266,7 +266,7 @@ int main()
 	 
 	 root=createBST(arr,start,end-1);
 	 Preordertraversal(root);
-
+*/
 /*	
 	cout<<"tree is BST"<<check(root).isBST ;
 
