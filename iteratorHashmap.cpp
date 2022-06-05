@@ -23,7 +23,7 @@ int main()
 
     }
 
-        //syntax of iterator in unordered map;
+        //syntax of iterator of vector;
 
     vector<int>v;
     v.push_back(10);
