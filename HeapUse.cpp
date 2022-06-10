@@ -66,7 +66,7 @@ class PriorityQueue1        //MIN HEAP
             {
                 MI=LCI;
             }
-            if(v[MI]<v.size() && v[MI]>v[RCI])
+            if(RCI<v.size() && v[MI]>v[RCI])
             {
                 MI=RCI;
             }
